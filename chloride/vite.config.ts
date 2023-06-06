@@ -1,10 +1,17 @@
 import { defineConfig } from "vite";
+import { VitePWA } from 'vite-plugin-pwa'
 import vue from "@vitejs/plugin-vue";
+
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [vue()],
-
+  plugins: [
+    vue(),
+    VitePWA(),
+  ],
+  optimizeDeps: {
+    exclude: ['@swc/core'],
+  },
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors
   clearScreen: false,
@@ -23,5 +30,20 @@ export default defineConfig(async () => ({
     minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Specify any custom chunks you want to create
+          // For example, splitting Vue-related libraries into a separate chunk
+          'vue-related': ['vue', 'vue-router', 'vuex'],
+        },
+      },
+      treeshake: {
+        // Specify any additional modules you want to exclude from tree shaking
+        // For example, excluding certain utility libraries or dependencies
+        moduleSideEffects: ['lodash-es'],
+      },
+    },
   },
 }));

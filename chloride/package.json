@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "node sass.js; vite",
-    "build": "sass src/styles.scss src/styles.css; vue-tsc --noEmit && vite build",
-    "preview": "sass src/styles.scss src/styles.css; vite preview",
-    "tauri": "sass src/styles.scss src/styles.css; tauri"
+    "build": "node sass.js; vue-tsc --noEmit && vite build",
+    "preview": "node sass.js; vite preview",
+    "tauri": "node sass.js; tauri"
   },
   "dependencies": {
+    "@swc/core": "^1.3.62",
     "@tauri-apps/api": "^1.3.0",
     "node-sass": "^9.0.0",
     "sass": "^1.62.1",
+    "vite-plugin-pwa": "^0.16.3",
     "vue": "^3.3.4"
   },
   "devDependencies": {
