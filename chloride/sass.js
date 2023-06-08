@@ -1,16 +1,16 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import sass from 'node-sass';
 
-const sourceDir = 'src';
-const outputDir = 'src';
+const sourceDirectory = 'src';
+const outputDirectory = 'src';
 
-const scssFiles = fs.readdirSync(sourceDir).filter(file => file.endsWith('.scss'));
+const scssFiles = fs.readdirSync(sourceDirectory).filter(file => file.endsWith('.scss'));
 
-scssFiles.forEach(file => {
-  const sourcePath = path.join(sourceDir, file);
+for (const file of scssFiles) {
+  const sourcePath = path.join(sourceDirectory, file);
   const outputFilename = file.replace('.scss', '.css');
-  const outputPath = path.join(outputDir, outputFilename);
+  const outputPath = path.join(outputDirectory, outputFilename);
 
   sass.render({
     file: sourcePath,
@@ -25,4 +25,4 @@ scssFiles.forEach(file => {
       fs.writeFileSync(`${outputPath}.map`, result.map);
     }
   });
-});
+}

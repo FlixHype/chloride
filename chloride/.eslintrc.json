@@ -6,7 +6,9 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:vue/vue3-essential"
+        "plugin:vue/vue3-essential",
+        "plugin:sonarjs/recommended",
+        "plugin:unicorn/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -15,7 +17,9 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "vue"
+        "sonarjs",
+        "vue",
+        "unicorn"
     ],
     "rules": {
     }
