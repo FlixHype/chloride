@@ -10,8 +10,7 @@
         "plugin:vue/vue3-essential",
         "plugin:sonarjs/recommended",
         "plugin:unicorn/recommended",
-        "plugin:promise/recommended",
-        "plugin:node/recommended"
+        "plugin:promise/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -24,13 +23,10 @@
         "vue",
         "unicorn",
         "promise",
-        "node",
         "html"
     ],
     "rules": {
         "unicorn/prevent-abbreviations": "off",
-        "unicorn/filename-case": "off",
-        "node/no-unsupported-features/es-syntax": "off",
-        "node/no-unpublished-import": "off"
+        "unicorn/filename-case": "off"
     }
 }
