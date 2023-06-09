@@ -9,9 +9,6 @@ export default defineConfig(async () => ({
     vue(),
     VitePWA(),
   ],
-  optimizeDeps: {
-    exclude: ['@swc/core'],
-  },
   clearScreen: false,
   server: {
     port: 1420,
